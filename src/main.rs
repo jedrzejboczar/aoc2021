@@ -9,6 +9,7 @@ mod day1;
 mod day2;
 mod day3;
 mod day4;
+mod day5;
 
 #[derive(Debug, StructOpt)]
 struct Opt {
@@ -64,6 +65,20 @@ fn main() -> Result<()> {
             let (nums, mut boards) = day4::parse_lines(&lines)?;
             println!("Winner score = {}", day4::play_to_win(&nums, &mut boards, opt.verbose).expect("Should finish"));
             println!("Winner score = {}", day4::play_to_loose(&nums, &mut boards, opt.verbose).expect("Should finish"));
+        },
+        5 => {
+            let lines: Vec<day5::Line> = utils::load_from_file(opt.input)?;
+            let vents = day5::VentsCount::non_diagonal(&lines);
+            let show = |vents: day5::VentsCount| {
+                if opt.verbose {
+                    println!("Hydrothermal vents:\n{}", vents);
+                }
+                println!("Dangerous areas count = {}", vents.dangerous_area_count());
+            };
+            println!("Part 1:");
+            show(day5::VentsCount::non_diagonal(&lines));
+            println!("Part 2:");
+            show(day5::VentsCount::all(&lines));
         },
         day => Err(io::Error::new(io::ErrorKind::InvalidData, DayError(day)))?,
     }
