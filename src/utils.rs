@@ -44,3 +44,10 @@ pub fn load_from_file<P, T, E>(path: P) -> io::Result<Vec<T>>
     parse_lines(input)
         .collect()
 }
+
+/// Load lines from a file
+pub fn load_lines<P>(path: P) -> io::Result<Vec<String>>
+    where P: AsRef<Path>
+{
+    load_from_file(path)
+}

@@ -10,6 +10,7 @@ mod day2;
 mod day3;
 mod day4;
 mod day5;
+mod day6;
 
 #[derive(Debug, StructOpt)]
 struct Opt {
@@ -80,6 +81,18 @@ fn main() -> Result<()> {
             println!("Part 2:");
             show(day5::VentsCount::all(&lines));
         },
+        6 => {
+            let fish_start = day6::load_data(&utils::load_lines(opt.input)?);
+            let fish = day6::simulate(fish_start.clone(), 80, opt.verbose);
+            println!("Part 1:");
+            println!("There are {} Lanternfish after 80 days", fish.len());
+            println!("Part 2:");
+            for days in [80, 256] {
+                let n = day6::calculate_population(&fish_start, days, opt.verbose);
+                println!("There are {} Lanternfish after {} days", n, days);
+            }
+
+        }
         day => Err(io::Error::new(io::ErrorKind::InvalidData, DayError(day)))?,
     }
 
