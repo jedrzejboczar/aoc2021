@@ -11,6 +11,7 @@ mod day3;
 mod day4;
 mod day5;
 mod day6;
+mod day7;
 
 #[derive(Debug, StructOpt)]
 struct Opt {
@@ -91,7 +92,12 @@ fn main() -> Result<()> {
                 println!("There are {} Lanternfish after {} days", n, days);
             }
 
-        }
+        },
+        7 => {
+            let positions = day7::load_data(&utils::load_lines(opt.input)?);
+            println!("Part 1:\n{:?}", day7::best_position(&positions, day7::FuelCost::Constant));
+            println!("Part 2:\n{:?}", day7::best_position(&positions, day7::FuelCost::Increasing));
+        },
         day => Err(io::Error::new(io::ErrorKind::InvalidData, DayError(day)))?,
     }
 
