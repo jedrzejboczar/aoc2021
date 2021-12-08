@@ -69,7 +69,6 @@ fn main() -> Result<()> {
         },
         5 => {
             let lines: Vec<day5::Line> = utils::load_from_file(opt.input)?;
-            let vents = day5::VentsCount::non_diagonal(&lines);
             let show = |vents: day5::VentsCount| {
                 if opt.verbose {
                     println!("Hydrothermal vents:\n{}", vents);

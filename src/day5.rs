@@ -10,10 +10,12 @@ pub struct Line {
 }
 
 impl Line {
+    #[allow(dead_code)]
     pub fn is_horizontal(&self) -> bool {
         self.delta().1 == 0
     }
 
+    #[allow(dead_code)]
     pub fn is_vertical(&self) -> bool {
         self.delta().0 == 0
     }
