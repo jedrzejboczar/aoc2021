@@ -13,6 +13,7 @@ mod day5;
 mod day6;
 mod day7;
 mod day8;
+mod day9;
 
 #[derive(Debug, StructOpt)]
 struct Opt {
@@ -105,6 +106,11 @@ fn main() -> Result<()> {
                 day8::print_lines(&lines);
             }
             println!("Part 1: {}", day8::solve_part1(&lines));
+        },
+        9 => {
+            let heights = day9::load_data(&utils::load_lines(opt.input)?);
+            println!("Part 1: {}", day9::part_1(&heights, opt.verbose));
+            println!("Part 2: {}", day9::part_2(&heights, opt.verbose));
         },
         day => Err(io::Error::new(io::ErrorKind::InvalidData, DayError(day)))?,
     }
