@@ -12,6 +12,7 @@ mod day4;
 mod day5;
 mod day6;
 mod day7;
+mod day8;
 
 #[derive(Debug, StructOpt)]
 struct Opt {
@@ -97,6 +98,13 @@ fn main() -> Result<()> {
             let positions = day7::load_data(&utils::load_lines(opt.input)?);
             println!("Part 1:\n{:?}", day7::best_position(&positions, day7::FuelCost::Constant));
             println!("Part 2:\n{:?}", day7::best_position(&positions, day7::FuelCost::Increasing));
+        },
+        8 => {
+            let lines = day8::load_data(&utils::load_lines(opt.input)?);
+            if opt.verbose {
+                day8::print_lines(&lines);
+            }
+            println!("Part 1: {}", day8::solve_part1(&lines));
         },
         day => Err(io::Error::new(io::ErrorKind::InvalidData, DayError(day)))?,
     }
