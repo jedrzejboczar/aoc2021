@@ -1,4 +1,4 @@
-use std::{slice::SliceIndex, collections::{HashMap, HashSet}};
+use std::collections::HashSet;
 
 pub fn load_data<S: AsRef<str>>(lines: &[S]) -> Heights {
     let grid = lines.iter()
@@ -26,7 +26,7 @@ pub enum Side {
 }
 
 #[derive(Debug, Clone)]
-struct Point {
+pub struct Point {
     x: usize,
     y: usize,
     height: u8,

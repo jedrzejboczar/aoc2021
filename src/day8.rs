@@ -1,4 +1,4 @@
-use std::{str::FromStr, fmt::Display, ops::RangeBounds};
+use std::{str::FromStr, fmt::Display};
 
 
 /// 7-segment display segements' states
@@ -26,6 +26,7 @@ impl Segments {
         (self.0 & other.0) == other.0
     }
 
+    #[allow(dead_code)]
     fn contained_in(&self, other: &Self) -> bool {
         other.contains(self)
     }
