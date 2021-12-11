@@ -3,8 +3,8 @@ use std::{path::PathBuf, error::Error, io, fmt::Display};
 use structopt::StructOpt;
 use anyhow::Result;
 
-mod utils;
-mod columns;
+use aoc::utils;
+
 mod day1;
 mod day2;
 mod day3;
@@ -15,6 +15,7 @@ mod day7;
 mod day8;
 mod day9;
 mod day10;
+mod day11;
 
 #[derive(Debug, StructOpt)]
 struct Opt {
@@ -118,6 +119,11 @@ fn main() -> Result<()> {
             println!("Part 1: {}", day10::part_1(&lines, opt.verbose));
             println!("Part 2: {}", day10::part_2(&lines, opt.verbose));
         },
+        11 => {
+            let lines = utils::load_lines(opt.input)?;
+            println!("Part 1: {}", day11::OctopusGrid::new(&lines).part_1(100, opt.verbose));
+            println!("Part 2: {}", day11::OctopusGrid::new(&lines).part_2(opt.verbose));
+        }
         day => Err(io::Error::new(io::ErrorKind::InvalidData, DayError(day)))?,
     }
 

@@ -2,7 +2,7 @@ use std::{num::ParseIntError, fmt::Display, collections::HashSet};
 
 use thiserror::Error;
 
-use crate::columns::ColumnDisplay;
+use aoc::columns::ColumnDisplay;
 
 #[derive(Debug)]
 pub struct BingoNumbers(Vec<usize>);
