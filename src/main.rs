@@ -16,6 +16,7 @@ mod day8;
 mod day9;
 mod day10;
 mod day11;
+mod day12;
 
 #[derive(Debug, StructOpt)]
 struct Opt {
@@ -123,7 +124,12 @@ fn main() -> Result<()> {
             let lines = utils::load_lines(opt.input)?;
             println!("Part 1: {}", day11::OctopusGrid::new(&lines).part_1(100, opt.verbose));
             println!("Part 2: {}", day11::OctopusGrid::new(&lines).part_2(opt.verbose));
-        }
+        },
+        12 => {
+            let graph = day12::Graph::new(&utils::load_lines(opt.input)?);
+            println!("Part 1: {}", graph.part_1(opt.verbose));
+            println!("Part 2: {}", graph.part_2(opt.verbose));
+        },
         day => Err(io::Error::new(io::ErrorKind::InvalidData, DayError(day)))?,
     }
 

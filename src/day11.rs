@@ -1,6 +1,6 @@
 use std::{ops::{Deref, DerefMut}, collections::{HashSet, VecDeque}};
 
-use aoc::grid::{Grid, GridPoint, INVERSE};
+use aoc::grid::{Grid, INVERSE};
 
 pub struct OctopusGrid(Grid<u8>);
 
