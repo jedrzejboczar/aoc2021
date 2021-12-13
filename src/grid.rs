@@ -20,7 +20,7 @@ pub struct GridPointMut<'a, T> {
     pub value: &'a mut T,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Grid<T> {
     cells: Vec<T>,  // 2D grid, row-major order
     pub width: usize,
@@ -152,7 +152,7 @@ impl<T: Copy> Grid<T> {
             return None;
         }
         self.cells.get(self.linear_index((x, y)))
-            .map(|v| GridPoint { x: x, y: y, value: *v })
+            .map(|v| GridPoint { x, y, value: *v })
     }
 
     /// Visit points starting from `pos` based on `condition`

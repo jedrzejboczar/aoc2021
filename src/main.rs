@@ -1,4 +1,4 @@
-use std::{path::PathBuf, error::Error, io, fmt::Display};
+use std::{path::PathBuf, error::Error, io, fmt::Display, fs::File};
 
 use structopt::StructOpt;
 use anyhow::Result;
@@ -17,6 +17,7 @@ mod day9;
 mod day10;
 mod day11;
 mod day12;
+mod day13;
 
 #[derive(Debug, StructOpt)]
 struct Opt {
@@ -130,6 +131,10 @@ fn main() -> Result<()> {
             println!("Part 1: {}", graph.part_1(opt.verbose));
             println!("Part 2: {}", graph.part_2(opt.verbose));
         },
+        13 => {
+            println!("Part 1: {}", day13::part_1(File::open(opt.input.clone())?));
+            println!("Part 2: {}", day13::part_2(File::open(opt.input)?));
+        }
         day => Err(io::Error::new(io::ErrorKind::InvalidData, DayError(day)))?,
     }
 
