@@ -1,4 +1,4 @@
-use std::{io::{Read, BufReader, BufRead}, ops::RangeBounds, collections::HashSet};
+use std::{io::{Read, BufReader, BufRead}, collections::HashSet};
 
 #[derive(Debug, Clone)]
 struct Dots {
