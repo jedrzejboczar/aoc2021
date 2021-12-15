@@ -4,7 +4,7 @@ pub const BOLD: &str = "\x1b[1m";
 pub const INVERSE: &str = "\x1b[0;30m\x1b[47m";
 pub const CLEAR: &str = "\x1b[0m";
 
-type Position = (usize, usize);
+pub type Position = (usize, usize);
 
 #[derive(Debug, Clone)]
 pub struct GridPoint<T> {
