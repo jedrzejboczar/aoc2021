@@ -20,6 +20,7 @@ mod day12;
 mod day13;
 mod day14;
 mod day15;
+mod day16;
 
 #[derive(Debug, StructOpt)]
 struct Opt {
@@ -144,6 +145,10 @@ fn main() -> Result<()> {
         15 => {
             println!("Part 1: {}", day15::part_1(File::open(opt.input.clone())?, opt.verbose));
             println!("Part 2: {}", day15::part_2(File::open(opt.input)?, opt.verbose));
+        },
+        16 => {
+            println!("Part 1: {}", day16::part_1(File::open(opt.input.clone())?, opt.verbose));
+            println!("Part 2: {}", day16::part_2(File::open(opt.input)?, opt.verbose));
         },
         day => Err(io::Error::new(io::ErrorKind::InvalidData, DayError(day)))?,
     }
